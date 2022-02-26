@@ -16,8 +16,8 @@ dow = {
         7: 'sunday',
     }
 
-
-sa = gspread.service_account(filename = 'api_credentials.json')
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+sa = gspread.service_account(filename = 'lululemon-query-4670d7b494fd.json', scopes = scope)
 
 # main loop
 while True:
@@ -87,24 +87,24 @@ while True:
         print('Uploading the new data to the mens google slide')
         newMensStr = 'new_items_in_' + newMens
         mensContent = pd.read_excel(newMensStr).to_csv().encode()
-        sa.import_csv('1ONngG-STAwnu7gpY59cvLyGmmmvcv6O24-7LlLzXwdA', mensContent)
+        sa.import_csv('16bzJJN95wDF6ESNwZ1rnrIBP9Kk1FCwQ800etmeF01s', mensContent)
         print('Uploading the new data to the mens google slide - Done')
 
         print('Uploading the new data to the womens google slide')
         newWomensStr = 'new_items_in_' + newWomens
         womensContent = pd.read_excel(newWomensStr).to_csv().encode()
-        sa.import_csv('1oZ77SmNEUZIXB5CfiAQ2yMVioyAWeRfYVsMs6zd1WGE', womensContent)
+        sa.import_csv('1iu7vmiMPapo1nJCcn85hDSsl-WnWRTV0mNDbS0t6xL8', womensContent)
         print('Uploading the new data to the womens google slide - Done')
 
         # post all products to the corresponding gslide
         print('Uploading the complete data to the mens google slide')
         allMensContent = pd.read_excel(newMens).to_csv().encode()
-        sa.import_csv('1DAYIgJBoJM4F5_W9JmQ-iYp0oxJRlWB3ecumsgOpFmE', allMensContent)
+        sa.import_csv('1BNHrJ4Brgvzr8pAKNTwumiWPxzI-zVqFggEIGGL-T0I', allMensContent)
         print('Uploading the complete data to the mens google slide - Done')
 
         print('Uploading the complete data to the womens google slide')
         allWomensContent = pd.read_excel(newWomens).to_csv().encode()
-        sa.import_csv('1YVLizdXH6rR8IapHsr0TKiubMQi_8pIdEJBLmld1Vec', allWomensContent)
+        sa.import_csv('1KhIve6zQQmqbiXnuKmloXXqH55yXKS6ChmsWLRSdsWY', allWomensContent)
         print('Uploading the complete data to the womens google slide - Done')
 
         # ----------------CANADA---------------------
@@ -113,24 +113,24 @@ while True:
         print('Uploading the new data to the mens Canada google slide')
         newMensStrCanada = 'new_items_in_' + newMensCanada
         mensContentCanada = pd.read_excel(newMensStrCanada).to_csv().encode()
-        sa.import_csv('19ceDZDRkjLjvJLUmrlg845zv6JmLNGgtlyX2-uI4Pks', mensContentCanada)
+        sa.import_csv('1aGM7QCby398VSa9hXEDFDgWYMhCVHW_AN2k6islG8SQ', mensContentCanada)
         print('Uploading the new data to the mens Canada google slide - Done')
 
         print('Uploading the new data to the womens Canada google slide')
         newWomensStrCanada = 'new_items_in_' + newWomensCanada
         womensContentCanada = pd.read_excel(newWomensStrCanada).to_csv().encode()
-        sa.import_csv('1em6_opbMxpIp_I3USpzgXDBW21jwDHr2fKwMqPLt4qU', womensContentCanada)
+        sa.import_csv('1UDBMFW1KX5d4hXw8b1gf0Is-WTsqYpLHGxMKSrt6av8', womensContentCanada)
         print('Uploading the new data to the womens Canada google slide - Done')
 
         # post all products to the corresponding gslide
         print('Uploading the complete data to the mens Canada google slide')
         allMensContentCanada = pd.read_excel(newMensCanada).to_csv().encode()
-        sa.import_csv('1lw6Hd_c89MoCIDgha9J8GTQF7Cc5Kpe-T8Vp1w48uqY', allMensContentCanada)
+        sa.import_csv('1kgopwsL8skVK1dG_g7uuspr3p_9XY8-RNZoLXI26UG8', allMensContentCanada)
         print('Uploading the complete data to the mens Canada google slide - Done')
 
         print('Uploading the complete data to the womens Canada google slide')
         allWomensContentCanada = pd.read_excel(newWomensCanada).to_csv().encode()
-        sa.import_csv('1bJcQZb0svA7plRx-ghdzHmUhv3CRypLqjtwmmPihQqg', allWomensContentCanada)
+        sa.import_csv('1dtqI1twnuN16HHXlBa9kNJfIOTi5HbloGR8AEEKlF-A', allWomensContentCanada)
         print('Uploading the complete data to the womens Canada google slide - Done')
 
         # delete old spreadsheets
@@ -155,4 +155,5 @@ while True:
 
         time.sleep(60)
     else:
+        print('---No Fetch---')
         time.sleep(30)
